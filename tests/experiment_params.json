@@ -1,8 +1,8 @@
 {
-   "input_path": "data",
-   "output_path": "output",
+   "input_path": "/u/gazal/APT_Aparna_sample/CompositionSpaceNFDI/tests/data",
+   "output_path": "/u/gazal/Composition_Nfdi_git/output/output_voxels",
    "n_big_slices": 10,
-    "voxel_size": 2,
+    "voxel_size": 3,
     "bics_clusters": 10,
     "n_phases": 3,
    "submission_path": "spaceship-titanic/submission.csv",
