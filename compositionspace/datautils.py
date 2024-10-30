@@ -274,6 +274,8 @@ class DataPreparation:
             filestring = os.path.join(prefix, filestring)
             filestrings.append(filestring)
 
+            #pbar = tqdm(os.listdir(self.params["input_path"]), desc="Reading files")##
+            #for filename in pbar:
             hdf = h5py.File(filestring, "w")
             group1 = hdf.create_group("group_xyz_Da_spec")
             group1.attrs["columns"] = ["x","y","z","Da","spec"]
@@ -503,10 +505,13 @@ class DataPreparation:
             dic_ratios = {}
             for spec_name in spec_names:
                 dic_ratios["{}".format(spec_name)] = []
+            for spec_name in spec_names:
+                dic_ratios["{}_atoms".format(spec_name)] = []
 
             dic_ratios["Total_no"]=[]
             dic_ratios["file_name"]=[]
             dic_ratios["vox"] = []
+
 
             ratios = []
             f_count = 0
@@ -519,6 +524,7 @@ class DataPreparation:
                 for spec in (spec_names):
                     ratio = (len(np.argwhere(arr==spec)))/N_x
                     dic_ratios["{}".format(spec)].append(ratio)
+                    dic_ratios["{}_atoms".format(spec)].append(len(np.argwhere(arr==spec))) ## AS 27.10.2024 added for compostion calculations
 
                 dic_ratios["file_name"].append(filename)
                 dic_ratios["vox"].append(f_count)

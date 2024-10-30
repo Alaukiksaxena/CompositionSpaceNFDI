@@ -1,0 +1,5 @@
+25.10.2024
+1. I added some calculation phase composition and error functionalities
+for nikita polins dataset(Fe doped Sm Co alloy)
+
+2. Interesesting to see that Fe and Cu are equally imporatnat for phase assignment

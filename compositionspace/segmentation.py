@@ -169,8 +169,17 @@ class CompositionClustering():
             group_name = list(list(hdfr.attrs.values())[1])
 
         ratios = pd.DataFrame(data=ratios, columns=ratios_columns) 
-        
-        X_train=ratios.drop(['Total_no','vox'], axis=1)
+
+        col_rm = []
+        for i in ratios_columns:
+            if "atoms" in i:
+                col_rm.append(i)
+        col_rm.append('Total_no')
+        col_rm.append('vox')
+
+        #X_train=ratios.drop(['Total_no','vox'], axis=1)
+        X_train=ratios.drop(col_rm, axis=1)
+
         
         gm = get_model(ml_params=ml_params)
         gm.fit(X_train)

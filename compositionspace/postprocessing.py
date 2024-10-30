@@ -123,7 +123,7 @@ class DataPostprocess:
             pointsToVTK(OutFile,x,y,z, data = {"label" : label}  )
 
         if save == True:
-            OutFile = os.path.join(self.params["output_path"], f"Output_DBSCAN_segmentation_phase{cluster_id}")
+            OutFile = os.path.join(self.params["output_path"], f"Output_DBSCAN_segmentation_phase{cluster_id}.h5")
             with h5py.File(OutFile, "w") as hdfw:
                 G = hdfw.create_group(f"{cluster_id}")
                 G.attrs["columns"] = Phase_columns
